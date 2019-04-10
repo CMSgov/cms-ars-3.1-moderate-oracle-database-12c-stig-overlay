@@ -1,1 +1,130 @@
 # cms-ars-3.1-moderate-oracle-database-12c-stig-overlay
+InSpec profile overlay to validate the secure configuration of Oracle Database 12c against [DISA's](https://iase.disa.mil/stigs/Pages/index.aspx) Oracle Database 12c STIG Version 1 Release 12 tailored for [CMS ARS 3.1](https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Info-Security-Library-Items/ARS-31-Publication.html) for CMS systems categories as Moderate.
+
+## Getting Started
+
+It is intended and recommended that InSpec run this profile from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target remotely over __ssh__.
+
+__For the best security of the runner, always install on the runner the _latest version_ of InSpec and supporting Ruby language components.__ 
+
+The latest versions and installation options are available at the [InSpec](http://inspec.io/) site.
+
+The following attributes must be configured in an attributes file for the profile to run correctly. More information about InSpec attributes can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
+
+```
+# description: 'username Oracle DB'
+user: 'system'
+
+# description: 'password Oracle DB'
+password: 'xvIA7zonxGM=1'
+
+# description: 'hostname Oracle DB'
+host: 'localhost'
+
+# description: 'service name Oracle DB'
+service: 'ORCLCDB'
+
+# description: 'Location of sqlplus tool'
+sqlplus_bin: '/opt/oracle/product/12.2.0.1/dbhome_1/bin/sqlplus'
+
+# description: 'Set to true if standard auditing is used'
+standard_auditing_used: true 
+
+# description: 'Set to true if unified auditing is used'
+unified_auditing_used: false
+
+# description: 'List of allowed database links'
+allowed_db_links: []
+
+# description: 'List of allowed database admins'
+allowed_dbadmin_users: []
+
+# description: 'List of users allowed access to PUBLIC'
+users_allowed_access_to_public: []
+
+# description: 'List of users allowed the dba role'
+allowed_users_dba_role: []
+
+# description: 'List of users allowed the system tablespace'
+allowed_users_system_tablespace: []
+
+# description: 'List of application owners'
+allowed_application_owners: []
+
+# description: 'List of allowed unlocked oracle db accounts'
+allowed_unlocked_oracledb_accounts: []
+
+# description: 'List of users allowed access to the dictionary table'
+users_allowed_access_to_dictionary_table: []
+
+# description: 'List of users allowed admin privileges'
+allowed_users_with_admin_privs: []
+
+# description: 'List of users allowed audit access'
+allowed_audit_users: []
+
+# description: 'List of allowed dba object owners'
+allowed_dbaobject_owners: []
+
+# description: 'List of allowed oracle db components'
+allowed_oracledb_components: []
+
+# description: 'List of oracle db components allowed to be intregrated into the dbms'
+allowed_oracledb_components_integrated_into_dbms: []
+
+# description: "List of allowed oracle dba's"
+oracle_dbas: []
+```
+
+## Running This Overlay
+When the __"runner"__ host uses this profile overlay for the first time, follow these steps: 
+
+```
+mkdir profiles
+cd profiles
+git clone https://github.com/CrunchyData/postgresql-baseline.git
+git clone https://github.cms.gov/ispg-dev/cms-ars-3.1-moderate-crunchy-data-postgresql-stig-overlay.git
+cd cms-ars-3.1-moderate-crunchy-data-postgresql-stig-overlay.git
+bundle install
+cd ..
+inspec exec cms-ars-3.1-moderate-crunchy-data-postgresql-stig-overlay --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml>
+```
+
+For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
+
+```
+cd profiles/CrunchyData/postgresql-baseline
+git pull
+cd ../cms-ars-3.1-moderate-crunchy-data-postgresql-stig-overlay
+git pull
+bundle install
+cd ..
+inspec exec cms-ars-3.1-moderate-crunchy-data-postgresql-stig-overlay --target=ssh://<your_target_host_name_or_ip_address> --user=<target_account_with_administrative_privileges> --password=<password_for_target_account> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json> --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml>
+```
+
+## Viewing the JSON Results
+
+The JSON results output file can be loaded into __[heimdall-lite](https://mitre.github.io/heimdall-lite/)__ for a user-interactive, graphical view of the InSpec results. 
+
+The JSON InSpec results file may also be loaded into a __[full heimdall server](https://github.com/mitre/heimdall)__, allowing for additional functionality such as to store and compare multiple profile runs.
+
+## Getting Help
+To report a bug or feature request, please open an [issue](https://github.cms.gov/ispg-dev/cms-ars-3.1-moderate-crunchy-data-postgresql-stig-overlay/issues/new).
+
+## Authors
+* Eugene Aronne
+* Danny Haynes
+
+## Special Thanks
+* Aaron Lippold
+
+## License
+* This project is licensed under the terms of the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0).
+
+### NOTICE  
+
+This software was produced for the U. S. Government under Contract Number HHSM-500-2012-00008I, and is subject to Federal Acquisition Regulation Clause 52.227-14, Rights in Data-General.  
+
+No other use other than that granted to the U. S. Government, or to those acting on behalf of the U. S. Government under that Clause is authorized without the express written permission of The MITRE Corporation.
+
+For further information, please contact The MITRE Corporation, Contracts Management Office, 7515 Colshire Drive, McLean, VA  22102-7539, (703) 983-6000.
