@@ -8,8 +8,8 @@ summary: .
 version: 0.1.0
 
 depends:
-- name: oracle-database-12-stig-baseline
-  path: ../oracle-database-12-stig-baseline
+- name: oracle-database-12c-stig-baseline
+  path: ../oracle-database-12c-stig-baseline
 
 attributes:
   - name: user
