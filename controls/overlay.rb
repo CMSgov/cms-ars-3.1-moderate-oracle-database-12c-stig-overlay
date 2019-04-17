@@ -1,7 +1,27 @@
 #encoding: utf-8
 include_controls 'Oracle Database 12c Security Technical Implementation Guide' do
   control 'V-61409' do
+    title 'Audit trail data must be retained online for ninety (90) days and archived 
+    for old records for one (1) year.'
+    desc 'Review and verify the implementation of an audit trail retention policy.
+    
+    Verify that audit data is maintained online for ninety (90) days and archived for 
+    old records for one (1) year to provide support for after-the-fact investigations 
+    of security incidents.
 
+    If not, this is a finding.'
+    desc 'check', 'Develop, document and implement an audit retention policy and 
+    procedures.
+
+    It is recommended that the most recent ninety days of audit logs remain 
+    available online.
+
+    After thirty ninety days, the audit logs may be maintained off-line.
+
+    Online maintenance provides for a more timely capability and inclination to         
+    investigate suspicious activity.'
+    tag "cci": ["CCI-000167"]
+    tag "nist": ["AU-11", "Rev_4"]
   end
 
   control 'V-61447' do
@@ -30,10 +50,13 @@ include_controls 'Oracle Database 12c Security Technical Implementation Guide' d
          able to make unauthorized modifications to the production data or database. 
          Every 90 days or more frequent periodic review of privilege assignments assures 
          that organizational and/or functional changes are reflected appropriately.'
+    tag "cci": ["CCI-001547"]
+    tag "nist": ["AC-2", "Rev_4"]
   end
 
   control 'V-61457' do
-    
+    tag "cci": ["CCI-000148"]
+    tag "nist": ["AU-6", "Rev_4"]
   end
 
   control 'V-61491' do
@@ -260,10 +283,6 @@ include_controls 'Oracle Database 12c Security Technical Implementation Guide' d
 
          Create a job to lock accounts under this profile that are more than 60 days old, where n is the 
          organization-defined time period.'
-  end
-
-  control 'V-61603' do
-
   end
   
   control 'V-61605' do
@@ -1049,6 +1068,18 @@ include_controls 'Oracle Database 12c Security Technical Implementation Guide' d
     desc 'fix', 'For each such account, use CMS certificate-based authentication.'
   end
 
+  control 'V-61749' do
+    impact "none"
+    desc, 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not 
+    mandatory in CMS ARS 3.1'
+  end
+
+  control 'V-61755' do
+    impact "none"
+    desc, 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not                               
+    mandatory in CMS ARS 3.1'
+  end
+  
   control 'V-61757' do
     title 'The DBMS must terminate the network connection associated with a communications session at the end of 
     the session or 30 minutes of inactivity.'
@@ -1069,6 +1100,11 @@ include_controls 'Oracle Database 12c Security Technical Implementation Guide' d
     ALTER PROFILE PPPPPP LIMIT IDLE_TIME 30;'
   end
 
+  control 'V-61765' do
+    tag "cci": ["CCI-001184"]
+    tag "nist": ["SC-23", "Rev_4"]
+  end
+  
   control 'V-61777' do
     title 'The DBMS must automatically terminate emergency accounts after 60 days for each type of account.'
 
