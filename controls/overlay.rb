@@ -1,5 +1,5 @@
 #encoding: utf-8
-include_controls 'Oracle Database 12c Security Technical Implementation Guide' do
+include_controls 'oracle-database-12c-stig-baseline' do
   control 'V-61409' do
     title 'Audit trail data must be retained online for ninety (90) days and archived 
     for old records for one (1) year.'
@@ -1069,14 +1069,14 @@ include_controls 'Oracle Database 12c Security Technical Implementation Guide' d
   end
 
   control 'V-61749' do
-    impact "none"
-    desc, 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not 
+    impact 'none'
+    desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not 
     mandatory in CMS ARS 3.1'
   end
 
   control 'V-61755' do
-    impact "none"
-    desc, 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not                               
+    impact 'none'
+    desc 'caveat', 'Not applicable for this CMS ARS 3.1 overlay, since the related security control is not                               
     mandatory in CMS ARS 3.1'
   end
   
