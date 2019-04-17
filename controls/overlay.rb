@@ -1,4 +1,4 @@
-# coding: utf-8
+#encoding: utf-8
 include_controls 'Oracle Database 12c Security Technical Implementation Guide' do
   control 'V-61409' do
 
@@ -527,7 +527,8 @@ include_controls 'Oracle Database 12c Security Technical Implementation Guide' d
     follows:
     audit policy policy1 by <user>;
     audit policy policy1 by <user> whenever not successful;'
-
+  end
+  
   control 'V-61675' do
     desc 'check', 'Review organization\'s access control policies and procedures addressing remote 
     access to the information system.
@@ -834,7 +835,7 @@ include_controls 'Oracle Database 12c Security Technical Implementation Guide' d
     determine the password verification function, if any, that is in use:
 
     SELECT * FROM SYS.DBA_PROFILES 
-    WHERE RESOURCE_NAME = 'PASSWORD_VERIFY_FUNCTION'
+    WHERE RESOURCE_NAME = "PASSWORD_VERIFY_FUNCTION"
     [AND PROFILE NOT IN (<list of non-applicable profiles>)]
     ORDER BY PROFILE;
 
@@ -989,23 +990,23 @@ include_controls 'Oracle Database 12c Security Technical Implementation Guide' d
     Review DBMS settings to determine if passwords must be changed periodically. If not, this is a finding:
 
     SELECT p1.profile,
-    CASE p1.limit WHEN 'UNLIMITED' THEN 'UNLIMITED' ELSE
-    CASE p2.limit WHEN 'UNLIMITED' THEN 'UNLIMITED' ELSE
-    CASE p3.limit WHEN 'UNLIMITED' THEN 'UNLIMITED' ELSE
-    CASE p4.limit WHEN 'UNLIMITED' THEN 'UNLIMITED' ELSE
-    TO_CHAR(DECODE(p1.limit, 'DEFAULT', p3.limit, p1.limit) + DECODE(p2.limit, 'DEFAULT', p4.limit, p2.limit))
+    CASE p1.limit WHEN \'UNLIMITED\' THEN \'UNLIMITED\' ELSE
+    CASE p2.limit WHEN \'UNLIMITED\' THEN \'UNLIMITED\' ELSE
+    CASE p3.limit WHEN \'UNLIMITED\' THEN \'UNLIMITED\' ELSE
+    CASE p4.limit WHEN \'UNLIMITED\' THEN \'UNLIMITED\' ELSE
+    TO_CHAR(DECODE(p1.limit, \'DEFAULT\', p3.limit, p1.limit) + DECODE(p2.limit, \'DEFAULT\', p4.limit, p2.limit))
     END
     END
     END
     END effective_life_time
     FROM dba_profiles p1, dba_profiles p2, dba_profiles p3, dba_profiles p4
     WHERE p1.profile=p2.profile
-    AND p3.profile='DEFAULT'
-    AND p4.profile='DEFAULT'
-    AND p1.resource_name='PASSWORD_LIFE_TIME'
-    AND p2.resource_name='PASSWORD_GRACE_TIME'
-    AND p3.resource_name='PASSWORD_LIFE_TIME' -- from DEFAULT profile
-    AND p4.resource_name='PASSWORD_GRACE_TIME' -- from DEFAULT profile
+    AND p3.profile=\'DEFAULT\'
+    AND p4.profile=\'DEFAULT\'
+    AND p1.resource_name=\'PASSWORD_LIFE_TIME\'
+    AND p2.resource_name=\'PASSWORD_GRACE_TIME\'
+    AND p3.resource_name=\'PASSWORD_LIFE_TIME\' -- from DEFAULT profile
+    AND p4.resource_name=\'PASSWORD_GRACE_TIME\' -- from DEFAULT profile
     order by 1;
 
     If the ‚Äúeffective_life_time‚Äù is greater than ‚Äú60‚Äù for any profile applied to user accounts, and the 
@@ -1334,5 +1335,3 @@ include_controls 'Oracle Database 12c Security Technical Implementation Guide' d
     ALTER USER <username> PROFILE ORA_STIG_PROFILE;'
   end
 end
-  
-
