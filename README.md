@@ -82,7 +82,7 @@ When the __"runner"__ host uses this profile overlay for the first time, follow 
 ```
 mkdir profiles
 cd profiles
-git clone https://github.com/mitre/oracle-database-12c-stig-baseline
+git clone https://github.com/mitre/oracle-database-12c-stig-baseline.git
 git clone https://github.cms.gov/ispg-dev/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay.git
 cd cms-ars-3.1-moderate-oracle-database-12c-stig-overlay.git
 bundle install
