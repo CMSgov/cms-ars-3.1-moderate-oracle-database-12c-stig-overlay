@@ -84,7 +84,7 @@ mkdir profiles
 cd profiles
 git clone https://github.com/mitre/oracle-database-12c-stig-baseline.git
 git clone https://github.cms.gov/ispg/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay.git
-cd cms-ars-3.1-moderate-oracle-database-12c-stig-overlay.git
+cd cms-ars-3.1-moderate-oracle-database-12c-stig-overlay
 bundle install
 cd ..
 inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
