@@ -12,20 +12,20 @@ The latest versions and installation options are available at the [InSpec](http:
 The following attributes must be configured in an attributes file for the profile to run correctly. More information about InSpec attributes can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
 
 ```
-# description: 'username Oracle DB (e.g., \'system\')'
-user: 'system'
+# description: Username Oracle DB (e.g., 'system')
+user: ''
 
-# description: 'password Oracle DB'
-password: 'xvIA7zonxGM=1'
+# description: Password Oracle DB (e.g., 'xvIA7zonxGM=1')
+password: ''
 
-# description: 'hostname Oracle DB'
-host: 'localhost'
+# description: Hostname Oracle DB (e.g., 'localhost')
+host: ''
 
-# description: 'service name Oracle DB'
-service: 'ORCLCDB'
+# description: Service name Oracle DB (e.g., 'ORCLCDB')
+service: ''
 
-# description: 'Location of sqlplus tool'
-sqlplus_bin: '/opt/oracle/product/12.2.0.1/dbhome_1/bin/sqlplus'
+# description: Location of sqlplus tool (e.g., '/opt/oracle/product/12.2.0.1/dbhome_1/bin/sqlplus')
+sqlplus_bin: ''
 
 # description: 'Set to true if standard auditing is used'
 standard_auditing_used: true 
