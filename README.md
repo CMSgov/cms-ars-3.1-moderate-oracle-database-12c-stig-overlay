@@ -27,52 +27,52 @@ service: ''
 # description: Location of sqlplus tool (e.g., '/opt/oracle/product/12.2.0.1/dbhome_1/bin/sqlplus')
 sqlplus_bin: ''
 
-# description: 'Set to true if standard auditing is used'
+# description: Set to true if standard auditing is used
 standard_auditing_used: true 
 
-# description: 'Set to true if unified auditing is used'
+# description: Set to true if unified auditing is used
 unified_auditing_used: false
 
-# description: 'List of allowed database links'
+# description: List of allowed database links
 allowed_db_links: []
 
-# description: 'List of allowed database admins'
+# description: List of allowed database admins
 allowed_dbadmin_users: []
 
-# description: 'List of users allowed access to PUBLIC'
+# description: List of users allowed access to PUBLIC
 users_allowed_access_to_public: []
 
-# description: 'List of users allowed the dba role'
+# description: List of users allowed the dba role
 allowed_users_dba_role: []
 
-# description: 'List of users allowed the system tablespace'
+# description: List of users allowed the system tablespace
 allowed_users_system_tablespace: []
 
-# description: 'List of application owners'
+# description: List of application owners
 allowed_application_owners: []
 
-# description: 'List of allowed unlocked oracle db accounts'
+# description: List of allowed unlocked oracle db accounts
 allowed_unlocked_oracledb_accounts: []
 
-# description: 'List of users allowed access to the dictionary table'
+# description: List of users allowed access to the dictionary table
 users_allowed_access_to_dictionary_table: []
 
-# description: 'List of users allowed admin privileges'
+# description: List of users allowed admin privileges
 allowed_users_with_admin_privs: []
 
-# description: 'List of users allowed audit access'
+# description: List of users allowed audit access
 allowed_audit_users: []
 
-# description: 'List of allowed dba object owners'
+# description: List of allowed dba object owners
 allowed_dbaobject_owners: []
 
-# description: 'List of allowed oracle db components'
+# description: List of allowed oracle db components
 allowed_oracledb_components: []
 
-# description: 'List of oracle db components allowed to be intregrated into the dbms'
+# description: List of oracle db components allowed to be intregrated into the dbms
 allowed_oracledb_components_integrated_into_dbms: []
 
-# description: "List of allowed oracle dba's"
+# description: List of allowed oracle dba's
 oracle_dbas: []
 ```
 
