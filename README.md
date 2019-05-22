@@ -28,7 +28,7 @@ service: ''
 sqlplus_bin: ''
 
 # description: Set to true if standard auditing is used
-standard_auditing_used: true 
+standard_auditing_used: false 
 
 # description: Set to true if unified auditing is used
 unified_auditing_used: false
