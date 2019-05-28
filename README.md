@@ -66,13 +66,13 @@ allowed_audit_users: []
 # description: List of allowed dba object owners
 allowed_dbaobject_owners: []
 
-# description: List of allowed oracle db components
+# description: List of allowed Oracle db components
 allowed_oracledb_components: []
 
 # description: List of Oracle db components allowed to be intregrated into the dbms
 allowed_oracledb_components_integrated_into_dbms: []
 
-# description: List of allowed oracle dba's
+# description: List of allowed Oracle dba's
 oracle_dbas: []
 ```
 
