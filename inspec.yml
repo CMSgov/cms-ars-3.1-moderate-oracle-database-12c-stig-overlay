@@ -97,7 +97,7 @@ attributes:
     default: []
 
   - name: allowed_oracledb_components
-    description: 'List of allowed oracle db components'
+    description: 'List of allowed Oracle db components'
     type: array
     default: []
 
@@ -107,7 +107,7 @@ attributes:
     default: []
 
   - name: oracle_dbas
-    description: "List of allowed oracle dba's"
+    description: "List of allowed Oracle dba's"
     type: array
     default: []
 
