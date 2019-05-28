@@ -51,7 +51,7 @@ allowed_users_system_tablespace: []
 # description: List of application owners
 allowed_application_owners: []
 
-# description: List of allowed unlocked oracle db accounts
+# description: List of allowed unlocked Oracle db accounts
 allowed_unlocked_oracledb_accounts: []
 
 # description: List of users allowed access to the dictionary table
@@ -69,7 +69,7 @@ allowed_dbaobject_owners: []
 # description: List of allowed oracle db components
 allowed_oracledb_components: []
 
-# description: List of oracle db components allowed to be intregrated into the dbms
+# description: List of Oracle db components allowed to be intregrated into the dbms
 allowed_oracledb_components_integrated_into_dbms: []
 
 # description: List of allowed oracle dba's
