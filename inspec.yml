@@ -107,7 +107,7 @@ attributes:
     default: []
 
   - name: oracle_dbas
-    description: "List of allowed Oracle dba's"
+    description: 'List of allowed Oracle dba''s'
     type: array
     default: []
 
