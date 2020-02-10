@@ -11,7 +11,7 @@ The latest versions and installation options are available at the [InSpec](http:
 
 Git is required to download the latest InSpec profiles using the instructions below. Git can be downloaded from the [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) site. 
 
-The following attributes must be configured in an attributes file for the profile to run correctly. More information about InSpec attributes can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
+The following inputs must be configured in an inputs file for the profile to run correctly. More information about InSpec inputs can be found in the [InSpec Profile Documentation](https://www.inspec.io/docs/reference/profiles/).
 
 ```
 # description: Username Oracle DB (e.g., 'system')
@@ -89,7 +89,7 @@ git clone https://github.cms.gov/ispg/cms-ars-3.1-moderate-oracle-database-12c-s
 cd cms-ars-3.1-moderate-oracle-database-12c-stig-overlay
 bundle install
 cd ..
-inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --input_files <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
 
 For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
@@ -101,7 +101,37 @@ cd ../cms-ars-3.1-moderate-oracle-database-12c-stig-overlay
 git pull
 bundle install
 cd ..
-inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --attrs=<path_to_your_attributes_file/name_of_your_attributes_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --input_files <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+```
+
+### Different InSpec Exec commands depending on your target
+How to run on a remote target using ssh
+```bash
+# How to run 
+$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input_files <path_to_your_input_file/name_of_your_input_file.yml>
+```
+
+If you need to run your profile with escalated privileges
+```bash
+# How to run 
+$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input_files <path_to_your_input_file/name_of_your_input_file.yml> --sudo
+```
+
+How to run on a remote target using pem key
+```bash
+# How to run 
+$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input_files <path_to_your_input_file/name_of_your_input_file.yml>
+```
+
+How to run on docker container
+```bash
+Inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t docker://DOCKER_CONTAINER_ID --input_files <path_to_your_input_file/name_of_your_input_file.yml>
+```
+
+To run it locally on the target with InSpec installed (JBOSS and InSpec installed on same box)
+```bash
+# How to run 
+$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --input_files <path_to_your_input_file/name_of_your_input_file.yml>
 ```
 
 ## Viewing the JSON Results
