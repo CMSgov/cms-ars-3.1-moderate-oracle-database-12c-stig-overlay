@@ -32,7 +32,7 @@ include_controls 'oracle-database-12c-stig-baseline' do
         in the DMZ (or on networks external to CMS), network communications between 
         the systems must be encrypted.'
   desc 'fix', 'Configure communications between the DBMS and remote 
-       applications/application servers to use CMSDoD-approved encryption.'	
+       applications/application servers to use CMS-approved encryption.'	
   end
 
   control 'V-61453' do
