@@ -79,30 +79,41 @@ allowed_oracledb_components_integrated_into_dbms: []
 oracle_dbas: []
 ```
 
-## Running This Overlay
+## Running This Overlay Directly from Github
+
+```
+# How to run
+inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay/archive/master.tar.gz --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+```
+
+### Different Run Options
+
+  [Full exec options](https://docs.chef.io/inspec/cli/#options-3)
+
+## Running This Overlay from a local Archive copy 
+
+If your runner is not always expected to have direct access to GitHub, use the following steps to create an archive bundle of this overlay and all of its dependent tests:
+
+(Git is required to clone the InSpec profile using the instructions below. Git can be downloaded from the [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) site.)
+
 When the __"runner"__ host uses this profile overlay for the first time, follow these steps: 
 
 ```
 mkdir profiles
 cd profiles
-git clone https://github.com/mitre/oracle-database-12c-stig-baseline.git
 git clone https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay.git
-cd cms-ars-3.1-moderate-oracle-database-12c-stig-overlay
-bundle install
-cd ..
-inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+inspec archive cms-ars-3.1-moderate-oracle-database-12c-stig-overlay
+inspec exec <name of generated archive> --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
 
 For every successive run, follow these steps to always have the latest version of this overlay and dependent profiles:
 
 ```
-cd profiles/oracle-database-12c-stig-baseline
+cd cms-ars-3.1-moderate-oracle-database-12c-stig-overlay
 git pull
-cd ../cms-ars-3.1-moderate-oracle-database-12c-stig-overlay
-git pull
-bundle install
 cd ..
-inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
+inspec archive cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --overwrite
+inspec exec <name of generated archive> --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
 
 ### Different InSpec Exec commands depending on your target
@@ -153,13 +164,14 @@ The JSON InSpec results file may also be loaded into a __[full heimdall server](
 
 ## Special Thanks
 * Alicia Sturtevant - [asturtevant](https://github.com/asturtevant)
+* Shivani Karikar - [karikarshivani](https://github.com/karikarshivani)
 
 ## Contributing and Getting Help
 To report a bug or feature request, please open an [issue](https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay/issues/new).
 
 ### NOTICE
 
-© 2020 The MITRE Corporation.
+© 2018-2020 The MITRE Corporation.
 
 Approved for Public Release; Distribution Unlimited. Case Number 18-3678.
 
