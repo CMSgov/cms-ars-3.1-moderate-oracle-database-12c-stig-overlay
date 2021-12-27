@@ -1,7 +1,7 @@
 # cms-ars-3.1-moderate-oracle-database-12c-stig-overlay
 InSpec profile overlay to validate the secure configuration of Oracle Database 12c against [DISA's](https://iase.disa.mil/stigs/Pages/index.aspx) Oracle Database 12c STIG Version 1 Release 12 tailored for [CMS ARS 3.1](https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Info-Security-Library-Items/ARS-31-Publication.html) for CMS systems categorized as Moderate.
 
-#### Container-Ready: Profile updated to adapt checks when the running against a containerized instance of MongoDB, based on reference container: (docker pull tekintian/oracle12c)
+#### Container-Ready: Profile updated to adapt checks when the running against a containerized instance of Oracle 12c, based on reference container: (docker pull tekintian/oracle12c)
 
 ## Getting Started
 
