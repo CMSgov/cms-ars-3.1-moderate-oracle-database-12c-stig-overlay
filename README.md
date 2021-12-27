@@ -107,7 +107,7 @@ Runs this profile over docker transport to the container ID <containerid>, repor
     
 The following is an example of using this command. 
 
-    inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay/archive/master.tar.gz -t docker://<containerid> --input-file oracle-database-input-file.yml --reporter cli json:oracle-database-12c-stig-baseliner-results.json
+    inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay/archive/master.tar.gz -t docker://<containerid> --input-file oracle-database-input-file.yml --reporter cli json:oracle-database-12c-stig-baseline-results.json
 
 ### Different Run Options
 
