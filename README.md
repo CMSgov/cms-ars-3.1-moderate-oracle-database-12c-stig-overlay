@@ -1,9 +1,9 @@
 # cms-ars-3.1-moderate-oracle-database-12c-stig-overlay
 InSpec profile overlay to validate the secure configuration of Oracle Database 12c against [DISA's](https://iase.disa.mil/stigs/Pages/index.aspx) Oracle Database 12c STIG Version 1 Release 12 tailored for [CMS ARS 3.1](https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Info-Security-Library-Items/ARS-31-Publication.html) for CMS systems categorized as Moderate.
 
-## Getting Started
+#### Container-Ready: Profile updated to adapt checks when the running against a containerized instance of MongoDB, based on reference container: (docker pull tekintian/oracle12c)
 
-It is intended and recommended that InSpec run this profile from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target remotely over __ssh__ or __winrm__.
+## Getting Started
 
 __For the best security of the runner, always install on the runner the _latest version_ of InSpec and supporting Ruby language components.__ 
 
@@ -79,10 +79,35 @@ oracle_dbas: []
 
 ## Running This Overlay Directly from Github
 
-```
-# How to run
-inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay/archive/master.tar.gz --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
-```
+### Using winrm
+
+    inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay/archive/master.tar.gz -t winrm://<hostip> --user '<admin-account>' --password=<password> --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter cli json:<filename>.json
+
+Runs this profile over winrm to the host at IP address <hostip> as a privileged user account (i.e., an account with administrative privileges), reporting results to both the command line interface (cli) and to a machine-readable JSON file. 
+    
+The following is an example of using this command. 
+
+    inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay/archive/master.tar.gz -t winrm://$winhostip --user '<admin-account>' --password=<password> --input-file oracle-database-input-file.yml --reporter cli json:oracle-database-12c-stig-baseline-results.json
+
+### Using SSH
+
+    inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay/archive/master.tar.gz -t ssh://<hostip> --user '<admin-account>' --password=<password> --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter cli json:<filename>.json
+
+Runs this profile over ssh to the host at IP address <hostip> as a privileged user account (i.e., an account with administrative privileges), reporting results to both the command line interface (cli) and to a machine-readable JSON file. 
+    
+The following is an example of using this command. 
+
+    inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay/archive/master.tar.gz -t ssh://$hostip --user '<admin-account>' --password=<password> --input-file oracle-database-input-file.yml --reporter cli json:oracle-database-12c-stig-baseline-results.json
+
+### Using Docker
+
+    inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay/archive/master.tar.gz -t docker://<containerid> --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter cli json:<filename>.json
+
+Runs this profile over docker transport to the container ID <containerid>, reporting results to both the command line interface (cli) and to a machine-readable JSON file. 
+    
+The following is an example of using this command. 
+
+    inspec exec https://github.com/CMSgov/cms-ars-3.1-moderate-oracle-database-12c-stig-overlay/archive/master.tar.gz -t docker://<containerid> --input-file oracle-database-input-file.yml --reporter cli json:oracle-database-12c-stig-baseliner-results.json
 
 ### Different Run Options
 
@@ -112,42 +137,6 @@ git pull
 cd ..
 inspec archive cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --overwrite
 inspec exec <name of generated archive> --input-file <path_to_your_input_file/name_of_your_input_file.yml> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
-```
-
-### Different InSpec Exec commands depending on your target
-How to run on a remote target using ssh
-```
-# How to run 
-$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input-file <path_to_your_input_file/name_of_your_input_file.yml>
-```
-
-How to run on a remote target using winrm
-```
-# How to run 
-$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t winrm://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input-file <path_to_your_input_file/name_of_your_input_file.yml>
-```
-
-If you need to run your profile with escalated privileges
-```
-# How to run 
-$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP:TARGET_PORT --input-file <path_to_your_input_file/name_of_your_input_file.yml> --sudo
-```
-
-How to run on a remote target using pem key
-```
-# How to run 
-$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t ssh://TARGET_USERNAME@TARGET_IP:TARGET_PORT -i PEM_KEY --input-file <path_to_your_input_file/name_of_your_input_file.yml>
-```
-
-How to run on docker container
-```
-Inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay -t docker://DOCKER_CONTAINER_ID --input-file <path_to_your_input_file/name_of_your_input_file.yml>
-```
-
-To run it locally on the target with InSpec installed (JBOSS and InSpec installed on same box)
-```
-# How to run 
-$ inspec exec cms-ars-3.1-moderate-oracle-database-12c-stig-overlay --input-file <path_to_your_input_file/name_of_your_input_file.yml>
 ```
 
 ## Using Heimdall for Viewing the JSON Results
